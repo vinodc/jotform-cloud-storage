@@ -1,4 +1,5 @@
 var links = [];
+var clicked = false;
 
 var explorer = window.Kloudless.explorer({
     // JotForm Kloudless App ID
@@ -31,11 +32,13 @@ explorer.on('success', function(files) {
 });
 
 $("#upload").click(function() {
+    clicked = true;
     resize();
     explorer.choose();
 });
 
 JFCustomWidget.subscribe("ready", function(){
+    if (clicked) resize();
     JFCustomWidget.subscribe("submit", function(){
         var msg = {
             valid: true,
