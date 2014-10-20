@@ -8,7 +8,7 @@ var explorer = window.Kloudless.explorer({
     link: true,
     direct_link: true,
     types: ['files'],
-    computer: false,
+    computer: true,
 });
 
 function resize() {
