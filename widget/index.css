@@ -1,0 +1,9 @@
+#upload {
+  float: right;
+  padding: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.files-desc {
+  display: none;
+}
