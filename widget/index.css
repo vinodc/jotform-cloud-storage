@@ -1,5 +1,11 @@
+body {
+  background-color: #eee!important;
+  font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans","Verdana","Tahoma","sans-serif";
+}
+.header {
+  text-align: center;
+}
 #upload {
-  float: right;
   padding: 10px;
   font-size: 15px;
   cursor: pointer;

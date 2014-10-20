@@ -3,7 +3,7 @@ var links = [];
 var explorer = window.Kloudless.explorer({
     // JotForm Kloudless App ID
     app_id: "Hs_l0xUXMPC4nsmJ0oABuSvK3gTZWNLnV7F4InGfYqixT28G",
-    multiselect: true /*JFCustomWidget.getQueryString('multiselect') === 'true'*/,
+    multiselect: JFCustomWidget.getQueryString('multiselect') !== 'false',
     link: true,
     direct_link: true,
     types: ['files'],
@@ -18,7 +18,7 @@ explorer.on('success', function(files) {
                            f.name + '</a></li>');
         return f.link;
     });
-    if (links && links.length > 1) {
+    if (links && links.length >= 1) {
         $(".files-desc").show();
     }
 });
