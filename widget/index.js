@@ -10,10 +10,17 @@ var explorer = window.Kloudless.explorer({
     computer: false,
 });
 
+function resize() {
+    JFCustomWidget.requestFrameResize({
+        width: 700,
+        height: 515
+    });
+}
+
 explorer.on('success', function(files) {
     $("#files").empty();
     $(".files-desc").hide();
-    var links = files.map(function(f) {
+    links = files.map(function(f) {
         $("#files").append('<li><a target="_blank" href="' + f.link + '">' +
                            f.name + '</a></li>');
         return f.link;
@@ -23,7 +30,10 @@ explorer.on('success', function(files) {
     }
 });
 
-explorer.choosify(document.getElementById('upload'));
+$("#upload").click(function() {
+    resize();
+    explorer.choose();
+});
 
 JFCustomWidget.subscribe("ready", function(){
     JFCustomWidget.subscribe("submit", function(){
