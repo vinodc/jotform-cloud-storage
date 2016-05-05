@@ -29,6 +29,7 @@ explorer.on('success', function(files) {
     if (links && links.length >= 1) {
         $(".files-desc").show();
     }
+    JFCustomWidget.sendData({value: links.join(" ")});
 });
 
 $("#upload").click(function() {
