@@ -23,8 +23,10 @@ function init() {
 
   var wOptions = JFCustomWidget.getWidgetSettings();
   var getLink = wOptions['getLink'] !== 'false';
-  var services = stringToList(wOptions["services"] || "all");
-  var types = stringToList(wOptions["types"] || "files");
+  var services = stringToList(wOptions["services"] === undefined ?
+                              "all" : wOptions['services']);
+  var types = stringToList(wOptions["types"] === undefined ?
+                           "files" : wOptions["types"]);
 
   var explorer = window.Kloudless.explorer({
     // Defaults to the JotForm Kloudless App ID
