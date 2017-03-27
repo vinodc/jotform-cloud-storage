@@ -26,6 +26,7 @@ function init() {
   var getLink = wOptions['getLink'] !== 'false';
   var services = stringToList(wOptions["services"]);
   var types = stringToList(wOptions["allowTypes"]);
+  var allowComputer = wOptions['allowComputerUpload'] !== 'false';
 
   var explorer = window.Kloudless.explorer({
     // Defaults to the JotForm Kloudless App ID
@@ -35,7 +36,8 @@ function init() {
     direct_link: getLink,
     services: services,
     types: types,
-    computer: wOptions['allowComputerUpload'] !== 'false',
+    account_management: !(services.length === 0 && allowComputer),
+    computer: allowComputer,
   });
 
   explorer.on('success', function(files) {
