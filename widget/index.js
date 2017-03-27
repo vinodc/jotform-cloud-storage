@@ -12,11 +12,19 @@ function resize() {
   });
 }
 
+function stringToList(data) {
+  return (data || "").split(',').map(function(i) {
+    return i.trim();
+  });
+}
+
 function init() {
   if (initialized) return false;
 
   var wOptions = JFCustomWidget.getWidgetSettings();
   var getLink = wOptions['getLink'] !== 'false';
+  var services = stringToList(wOptions["services"] || "all");
+  var types = stringToList(wOptions["types"] || "files");
 
   var explorer = window.Kloudless.explorer({
     // Defaults to the JotForm Kloudless App ID
@@ -24,8 +32,9 @@ function init() {
     multiselect: wOptions['multiselect'] !== 'false',
     link: getLink,
     direct_link: getLink,
-    types: ['files'],
-    computer: wOptions['allowComputerUpload'],
+    services: services,
+    types: types,
+    computer: wOptions['allowComputerUpload'] !== 'false',
   });
 
   explorer.on('success', function(files) {
