@@ -65,7 +65,7 @@ function init() {
       $(".files-desc").show();
     }
 
-    JFCustomWidget.sendData({value: returnData.join(" ")});
+    JFCustomWidget.sendData({value: JSON.stringify(returnData)});
   });
 
   $("#upload").click(function() {
@@ -85,7 +85,7 @@ JFCustomWidget.subscribe("ready", function(){
   JFCustomWidget.subscribe("submit", function(){
     var msg = {
       valid: true,
-      value: returnData.join(" "),
+      value: JSON.stringify(returnData),
     };
     JFCustomWidget.sendSubmit(msg);
   });
