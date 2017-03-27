@@ -2,8 +2,8 @@ var links = [];
 var clicked = false;
 
 var explorer = window.Kloudless.explorer({
-    // JotForm Kloudless App ID
-    app_id: "Hs_l0xUXMPC4nsmJ0oABuSvK3gTZWNLnV7F4InGfYqixT28G",
+    // Defaults to the JotForm Kloudless App ID
+    app_id: JFCustomWidget.getQueryString('app_id') || "Hs_l0xUXMPC4nsmJ0oABuSvK3gTZWNLnV7F4InGfYqixT28G",
     multiselect: JFCustomWidget.getQueryString('multiselect') !== 'false',
     link: true,
     direct_link: true,
