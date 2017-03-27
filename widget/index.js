@@ -13,7 +13,8 @@ function resize() {
 }
 
 function stringToList(data) {
-  return (data || "").split(',').map(function(i) {
+  if (!data) return [];
+  return data.split(',').map(function(i) {
     return i.trim();
   });
 }
@@ -23,10 +24,8 @@ function init() {
 
   var wOptions = JFCustomWidget.getWidgetSettings();
   var getLink = wOptions['getLink'] !== 'false';
-  var services = stringToList(wOptions["services"] === undefined ?
-                              "all" : wOptions['services']);
-  var types = stringToList(wOptions["types"] === undefined ?
-                           "files" : wOptions["types"]);
+  var services = stringToList(wOptions["services"]);
+  var types = stringToList(wOptions["allowTypes"]);
 
   var explorer = window.Kloudless.explorer({
     // Defaults to the JotForm Kloudless App ID
