@@ -72,7 +72,7 @@ function init() {
   });
 
   $("#upload").click(function() {
-    resize({x: 700, y: 515});
+    resize(700, 515);
     explorer.choose();
   });
 
