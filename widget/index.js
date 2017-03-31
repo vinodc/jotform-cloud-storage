@@ -26,8 +26,8 @@ function init() {
 
   var wOptions = JFCustomWidget.getWidgetSettings();
   var getLink = wOptions['getLink'] !== 'false';
-  var services = stringToList(wOptions["services"]);
-  var types = stringToList(wOptions["allowTypes"]);
+  var services = stringToList(wOptions["services"] || "all");
+  var types = stringToList(wOptions["allowTypes"] || "files");
   var allowComputer = wOptions['allowComputerUpload'] !== 'false';
 
   var explorer = window.Kloudless.explorer({
