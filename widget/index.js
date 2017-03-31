@@ -1,15 +1,17 @@
 var returnData = [];
-var clicked = false;
 var initialized = false;
 
 var kloudlessAppId = "Hs_l0xUXMPC4nsmJ0oABuSvK3gTZWNLnV7F4InGfYqixT28G";
 var kloudlessAccountId = 45245627;
 
-function resize() {
-  JFCustomWidget.requestFrameResize({
-    width: 700,
-    height: 515
-  });
+var initialWidth = 0;
+var initialHeight = 0;
+
+function resize(x, y) {
+  if (x === undefined) x = initialWidth;
+  if (y === undefined) y = Math.max(
+    $("body").outerHeight() + 25, initialHeight);
+  JFCustomWidget.requestFrameResize({width: x, height: y});
 }
 
 function stringToList(data) {
@@ -64,23 +66,25 @@ function init() {
     if (returnData && returnData.length >= 1) {
       $(".files-desc").show();
     }
+    resize();
 
     JFCustomWidget.sendData({value: JSON.stringify(returnData)});
   });
 
   $("#upload").click(function() {
-    clicked = true;
-    resize();
+    resize({x: 700, y: 515});
     explorer.choose();
   });
+
+  var widgetData = JFCustomWidget.getWidgetData();
+  initialHeight = widgetData.height;
+  initialWidth = widgetData.width;
 
   initialized = true;
 }
 
 JFCustomWidget.subscribe("ready", function(){
   init();
-
-  if (clicked) resize();
 
   JFCustomWidget.subscribe("submit", function(){
     var msg = {
