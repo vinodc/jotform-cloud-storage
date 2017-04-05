@@ -1,4 +1,4 @@
-var returnData = [];
+var returnData = '';
 var initialized = false;
 
 var kloudlessAppId = "Hs_l0xUXMPC4nsmJ0oABuSvK3gTZWNLnV7F4InGfYqixT28G";
@@ -61,7 +61,8 @@ function init() {
         $("#files").append('<li>' + (f.path || f.name) + '</li>');
         return f.path || f.name;
       }
-    });
+    }).join('\n');
+
 
     if (returnData && returnData.length >= 1) {
       $(".files-desc").show();
