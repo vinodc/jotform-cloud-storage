@@ -58,7 +58,7 @@ function init() {
         return f.link;
       }
       else {
-        $("#files").append('<li>' + (f.path || f.name) + '</li>');
+        $("#files").append('<li>' + f.name + '</li>');
         return f.path || f.name;
       }
     }).join('\n');
